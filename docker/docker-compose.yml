@@ -12,12 +12,12 @@ services:
       depends_on: 
         - php-fpm
       networks:
-        - efimstudio
+        - lectnet
 
     php-fpm:
       build: ./php
       environment:
-        PHP_IDE_CONFIG: "serverName=EFIMSTUDIO"
+        PHP_IDE_CONFIG: "serverName=LECTION"
       container_name: php-fpm
       working_dir: /application
       volumes:
@@ -25,8 +25,8 @@ services:
         - ./php/www2.conf:/usr/local/etc/php-fpm.d/www2.conf
         - ./php/php-ini-overrides.ini:/usr/local/etc/php/conf.d/99-overrides.ini
       networks:
-        - efimstudio
+        - lectnet
 
 networks:
-  efimstudio:
-    name: efimstudio
+  lectnet:
+    name: lectnet
