@@ -1,8 +1,8 @@
 version: "3.5"
 services:
-    webserver:
+    lect-webserver:
       image: nginx:alpine
-      container_name: webserver
+      container_name: lect-webserver
       working_dir: /application
       volumes:
           - ../:/application
@@ -10,15 +10,15 @@ services:
       ports:
         - "8081:80"
       depends_on: 
-        - php-fpm
+        - lect-php-fpm
       networks:
         - lectnet
 
-    php-fpm:
+    lect-php-fpm:
       build: ./php
       environment:
         PHP_IDE_CONFIG: "serverName=LECTION"
-      container_name: php-fpm
+      container_name: lect-php-fpm
       working_dir: /application
       volumes:
         - ../:/application
